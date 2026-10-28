@@ -4,6 +4,8 @@
 
 A bilingual, immersive reading platform for the Jataka tales, built for Sri Lankan children (8–15), families and classrooms. Twelve tales, two languages, one complete 3D reading experience — no accounts, no advertising, no tracking.
 
+**Live site:** <https://3d-website-project-two.vercel.app> · **Source:** <https://github.com/shamithx/3d-website-project>
+
 ---
 
 ## What is in this repository
@@ -163,9 +165,24 @@ Covers were illustrated specifically for this project in a single art direction;
 
 ### Vercel
 
-1. Import the repository; the framework is detected automatically.
-2. Set `NEXT_PUBLIC_SITE_URL` to the production origin.
-3. Deploy. No other configuration is required.
+The site is deployed on Vercel's free Hobby plan.
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | Next.js (detected automatically) |
+| Build command | `npm run build` |
+| Output directory | `.next` (managed by the Vercel Next.js runtime; do not override) |
+| Node version | 20 |
+| Production branch | `main` |
+
+Set these environment variables for Production (and Preview, if previews are used):
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://3d-website-project-two.vercel.app
+NEXT_PUBLIC_REPO_URL=https://github.com/shamithx/3d-website-project
+```
+
+No other configuration is required. The project uses server features (`cookies()` for locale, a dynamic worksheet route, `headers()` in `next.config.mjs`), so it is deployed as a Next.js app — not a static export.
 
 ### Netlify
 
@@ -193,7 +210,7 @@ The service worker requires HTTPS (or localhost) and is only registered in produ
 - Text-to-speech depends on voices installed on the device. Sinhala (`si-LK`) voices are uncommon; the UI explains when one is unavailable instead of failing silently.
 - Offline caching covers the app shell and pages that have already been visited.
 - Fonts are fetched at build time by `next/font`; an offline build machine needs network access for the first build.
-- The repository is **not published** and no open-source licence has been granted yet. Add a licence only after deciding ownership and reuse terms for the code and the illustrations. The public-domain translations remain public domain.
+- The repository is public but has **no open-source licence** yet. Add a licence only after deciding ownership and reuse terms for the code and the illustrations. The public-domain translations remain public domain.
 
 ## Credits
 
