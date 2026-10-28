@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import { useSpeech } from "@/hooks/useSpeech";
-import { HeadphonesIcon } from "@/components/shared/Icons";
+import { FeatherIcon, HeadphonesIcon } from "@/components/shared/Icons";
 import type { VocabularyEntry } from "@/content/stories/types";
 import { cn } from "@/lib/utils";
 
@@ -30,9 +30,17 @@ export function VocabularyBuilder({ words }: { words: readonly VocabularyEntry[]
 
   if (words.length === 0) {
     return (
-      <p className="border border-dashed border-forest-900/20 px-5 py-6 text-[0.86rem] text-ink-500">
-        {t("story.prepNote")}
-      </p>
+      <div className="flex gap-3 border border-gold-500/35 bg-gold-300/10 px-5 py-6">
+        <FeatherIcon size={18} className="mt-0.5 shrink-0 text-gold-600" />
+        <div>
+          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-forest-900">
+            {t("common.readerComingSoon")}
+          </p>
+          <p className={cn("mt-1 text-[0.86rem] leading-relaxed text-ink-500", locale === "si" && "si")}>
+            {t("learn.prepVocabulary")}
+          </p>
+        </div>
+      </div>
     );
   }
 

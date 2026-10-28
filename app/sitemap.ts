@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/stories`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/teachers`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${base}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.4 },
   ];
 
   const storyRoutes: MetadataRoute.Sitemap = stories.flatMap((story) => {

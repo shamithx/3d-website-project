@@ -8,7 +8,7 @@ import { VocabularyBuilder } from "@/components/learning/VocabularyBuilder";
 import { getStory, stories } from "@/content/stories";
 import { getLocale } from "@/lib/locale-server";
 import { translate } from "@/lib/i18n";
-import { ArrowLeftIcon, ArrowRightIcon, BookIcon, InfoIcon } from "@/components/shared/Icons";
+import { ArrowLeftIcon, ArrowRightIcon, BookIcon, FeatherIcon } from "@/components/shared/Icons";
 import { GoldRule, SectionHeading } from "@/components/shared/ui";
 import type { Localized } from "@/content/stories/types";
 
@@ -132,9 +132,16 @@ export default async function LearnPage({ params }: { params: Promise<{ slug: st
               {reader && reader.quiz.length > 0 ? (
                 <Quiz questions={reader.quiz} slug={story.slug} />
               ) : (
-                <div className="flex gap-3 border border-dashed border-forest-900/20 px-5 py-6">
-                  <InfoIcon size={18} className="mt-0.5 shrink-0 text-gold-600" />
-                  <p className="text-[0.86rem] leading-relaxed text-ink-500">{t("learn.prepQuiz")}</p>
+                <div className="flex gap-3 border border-gold-500/35 bg-gold-300/10 px-5 py-6">
+                  <FeatherIcon size={18} className="mt-0.5 shrink-0 text-gold-600" />
+                  <div>
+                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-forest-900">
+                      {t("common.readerComingSoon")}
+                    </p>
+                    <p className={`mt-1 text-[0.86rem] leading-relaxed text-ink-500 ${locale === "si" ? "si" : ""}`}>
+                      {t("learn.prepQuiz")}
+                    </p>
+                  </div>
                 </div>
               )}
             </div>

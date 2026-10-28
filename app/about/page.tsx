@@ -147,13 +147,31 @@ export default async function AboutPage() {
               ) : null}
 
               {section.id === "contact" ? (
-                <Link
-                  href="/teachers"
-                  className="mt-6 inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-forest-900"
-                >
-                  {t("nav.teachers")}
-                  <ArrowRightIcon size={15} />
-                </Link>
+                <div className="mt-6">
+                  <p className="text-[0.6rem] uppercase tracking-[0.16em] text-gold-600">{t("contact.emailLabel")}</p>
+                  <a
+                    href="mailto:shamithchamod@gmail.com"
+                    className="mt-2 inline-block break-all text-[1.05rem] text-forest-900 underline decoration-gold-500/45 underline-offset-4 transition-colors hover:text-emerald-700"
+                  >
+                    shamithchamod@gmail.com
+                  </a>
+                  <div className="mt-6 flex flex-wrap gap-5">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-forest-900"
+                    >
+                      {t("contact.title")}
+                      <ArrowRightIcon size={15} />
+                    </Link>
+                    <Link
+                      href="/teachers"
+                      className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-forest-900"
+                    >
+                      {t("nav.teachers")}
+                      <ArrowRightIcon size={15} />
+                    </Link>
+                  </div>
+                </div>
               ) : null}
             </section>
           ))}

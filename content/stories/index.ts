@@ -15,7 +15,7 @@ export const vessantaraJataka: Story = {
   title: { en: "Vessantara Jataka", si: "වෙස්සන්තර ජාතකය" },
   tagline: { en: "The prince who gave everything", si: "සියල්ල දන් දුන් කුමරු" },
   summary: {
-    en: "Prince Vessantara gives away the kingdom’s rain-bringing white elephant, then his wealth, his children and finally his wife — not because he does not love them, but because he has promised to hold nothing back.",
+    en: "Prince Vessantara gives away the kingdom’s rain-bringing white elephant, then his wealth, his children and finally his wife. He does not do it because he loves them less, but because he has promised to hold nothing back.",
     si: "වෙස්සන්තර කුමරු රාජ්‍යයට වැසි ගෙන දෙන සුදු ඇතා, පසුව තම ධනය, දරුවන් සහ අවසානයේ බිරිඳ පවා දන් දෙයි. ඔහු ඔවුන්ට ආදරය නොකළ නිසා නොව, කිසිවක් රඳවා නොගන්නා බවට දුන් පොරොන්දුව නිසාය.",
   },
   moral: {
@@ -540,9 +540,11 @@ export const lives: readonly LifeGroup[] = (["hare", "deer", "monkey", "elephant
   }))
   .filter((group) => group.stories.length > 0);
 
-/** Deterministic "story of the day" based on the calendar date. */
+/** Deterministic "story of the day", drawn only from tales with a full reader. */
 export function storyOfTheDay(date = new Date()): Story {
   const start = Date.UTC(date.getUTCFullYear(), 0, 0);
   const dayOfYear = Math.floor((Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) - start) / 86400000);
-  return stories[dayOfYear % stories.length] ?? sasaJataka;
+  const ready = stories.filter((story) => Boolean(story.reader));
+  const pool = ready.length > 0 ? ready : [sasaJataka];
+  return pool[dayOfYear % pool.length] ?? sasaJataka;
 }

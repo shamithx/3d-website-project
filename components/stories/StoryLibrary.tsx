@@ -93,6 +93,8 @@ export function StoryLibrary({
               <SearchIcon size={17} className="shrink-0 text-ink-500" />
               <span className="sr-only">{t("library.searchLabel")}</span>
               <input
+                id="story-search"
+                name="search"
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
@@ -115,6 +117,8 @@ export function StoryLibrary({
               <label className="flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.12em] text-ink-500">
                 {t("library.sortLabel")}
                 <select
+                  id="story-sort"
+                  name="sort"
                   value={sort}
                   onChange={(event) => setSort(event.target.value as SortKey)}
                   className="border border-forest-900/20 bg-parchment-50 px-2 py-1.5 text-[0.72rem] normal-case tracking-normal text-forest-900"

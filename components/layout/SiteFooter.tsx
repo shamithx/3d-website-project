@@ -92,7 +92,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               </li>
               <li>
                 <Link
-                  href="/about#contact"
+                  href="/contact"
                   className="text-[0.86rem] text-parchment-200/75 transition-colors hover:text-parchment-50"
                 >
                   {t("about.contactTitle")}
@@ -121,6 +121,15 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                 )}
               </li>
             </ul>
+            <div className="mt-7 border-t border-parchment-200/12 pt-6">
+              <p className="text-[0.6rem] uppercase tracking-[0.14em] text-gold-400">{t("footer.email")}</p>
+              <a
+                href="mailto:shamithchamod@gmail.com"
+                className="mt-2 inline-block break-all text-[0.84rem] text-parchment-100 underline decoration-gold-400/45 underline-offset-4 transition-colors hover:text-gold-300"
+              >
+                shamithchamod@gmail.com
+              </a>
+            </div>
             <div className="mt-7">
               <LocaleSwitch tone="dark" />
             </div>
@@ -128,7 +137,10 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-parchment-200/12 pt-6 text-[0.72rem] text-parchment-200/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>{t("footer.rights").replace("{year}", String(year))}</p>
+          <div className="flex flex-col gap-1">
+            <p>{t("footer.rights").replace("{year}", String(year))}</p>
+            <p className="text-gold-300/65">{t("footer.madeIn")}</p>
+          </div>
           <p className="max-w-md sm:text-right">{t("footer.offlineReady")}</p>
         </div>
       </div>

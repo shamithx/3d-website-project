@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { StoryCover } from "@/components/art/StoryCover";
 import { StoryAtmosphere } from "@/components/stories/StoryAtmosphere";
-import { ArrowRightIcon, CheckCircleIcon, PlayIcon, StarIcon } from "@/components/shared/Icons";
+import { ArrowRightIcon, CheckCircleIcon, FeatherIcon, PlayIcon, StarIcon } from "@/components/shared/Icons";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import { useProgress } from "@/components/providers/ProgressProvider";
 import type { StoryCardData } from "@/content/stories/card";
@@ -45,7 +45,7 @@ export function StoryCard({
       <Link
         href={`/stories/${story.slug}`}
         className="flex h-full flex-col focus-visible:outline-none"
-        aria-label={`${primaryTitle} — ${story.hasReader ? t("common.readStory") : t("common.openStory")}`}
+        aria-label={`${primaryTitle} — ${story.hasReader ? t("common.readStory") : t("common.comingSoon")}`}
       >
         <div className={cn("story-art relative", aspect)}>
           <div className={cn("!absolute inset-0 overflow-hidden bg-parchment-200", frame)}>
@@ -92,7 +92,12 @@ export function StoryCard({
                 <PlayIcon size={9} />
                 {t("library.readerReady")}
               </span>
-            ) : null}
+            ) : (
+              <span className="inline-flex items-center gap-1 rounded-sm bg-parchment-50/92 px-2 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-forest-900">
+                <FeatherIcon size={9} className="text-gold-600" />
+                {t("common.comingSoon")}
+              </span>
+            )}
           </div>
 
           {hydrated && completed ? (
@@ -117,12 +122,7 @@ export function StoryCard({
             {primaryTitle}
           </Heading>
 
-          <p
-            className={cn(
-              "mt-3 text-[0.88rem] leading-relaxed text-ink-500",
-              variant === "feature" ? "line-clamp-4" : "line-clamp-3",
-            )}
-          >
+          <p className="mt-3 line-clamp-4 text-[0.88rem] leading-relaxed text-ink-500">
             {story.summary[locale]}
           </p>
 
@@ -140,12 +140,12 @@ export function StoryCard({
 
           <div className="mt-4 flex items-center justify-between gap-3 border-t border-forest-900/10 pt-4">
             <span className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-forest-900">
-              {story.hasReader ? t("common.readStory") : t("common.openStory")}
+              {story.hasReader ? t("common.readStory") : t("common.comingSoon")}
               <ArrowRightIcon size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
             </span>
             {!story.hasReader ? (
-              <span className="text-[0.62rem] uppercase tracking-[0.1em] text-ink-500/70">
-                {t("common.inPreparation")}
+              <span className="max-w-[11rem] text-right text-[0.62rem] leading-snug tracking-[0.02em] text-ink-500/75">
+                {t("common.readerComingSoon")}
               </span>
             ) : null}
           </div>

@@ -91,7 +91,7 @@ export function TeacherRoom({ stories }: { stories: readonly TeacherStory[] }) {
             {t("teachers.duration")}: {t("common.minShort", { n: story.minutes })}
           </span>
           {!story.hasReader ? (
-            <span className="border border-gold-500/40 px-2 py-1 text-gold-600">{t("common.inPreparation")}</span>
+            <span className="border border-gold-500/40 px-2 py-1 text-gold-600">{t("common.comingSoon")}</span>
           ) : null}
         </div>
 
@@ -170,7 +170,7 @@ export function TeacherRoom({ stories }: { stories: readonly TeacherStory[] }) {
               {t("teachers.answerKey")}
             </a>
             <a href={`/stories/${story.slug}`} className="btn btn-sm border-forest-900/20 text-forest-900">
-              {t("common.openStory")}
+              {story.hasReader ? t("common.openStory") : t("story.aboutTale")}
             </a>
           </div>
         </section>

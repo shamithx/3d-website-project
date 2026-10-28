@@ -5,7 +5,7 @@ import { StoryCover } from "@/components/art/StoryCover";
 import { StoryCard } from "@/components/stories/StoryCard";
 import { toCardData } from "@/content/stories/card";
 import { getStory, stories } from "@/content/stories";
-import { ArrowRightIcon, ExternalIcon, InfoIcon, PlayIcon } from "@/components/shared/Icons";
+import { ArrowRightIcon, ExternalIcon, FeatherIcon, InfoIcon, PlayIcon } from "@/components/shared/Icons";
 import { ButtonLink, GoldRule, Tag } from "@/components/shared/ui";
 import { getLocale } from "@/lib/locale-server";
 import { translate } from "@/lib/i18n";
@@ -139,7 +139,16 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
           <h1 className="mt-2 text-display-lg text-forest-900">{story.title[locale]}</h1>
           <p className="mt-3 text-[1rem] italic text-forest-700">{story.tagline[locale]}</p>
 
-          <p className="mt-6 max-w-xl text-[1rem] leading-relaxed text-ink-500">{story.summary[locale]}</p>
+          {story.reader ? (
+            <p className="mt-6 max-w-xl text-[1rem] leading-relaxed text-ink-500">{story.summary[locale]}</p>
+          ) : (
+            <div className="mt-6 max-w-xl border-l border-gold-500/50 pl-4">
+              <p className="text-[0.6rem] uppercase tracking-[0.16em] text-gold-600">{t("story.teaserLabel")}</p>
+              <p className={`mt-2 text-[1rem] leading-[1.85] text-ink-500 ${locale === "si" ? "si" : ""}`}>
+                {story.summary[locale]}
+              </p>
+            </div>
+          )}
 
           <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-y border-forest-900/12 py-5 sm:grid-cols-4">
             <div>
@@ -163,39 +172,44 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
           </dl>
 
           <div className="mt-7 flex flex-wrap gap-3">
-            <ButtonLink href={story.reader ? readHref : learnHref} variant="primary" size="lg">
-              {story.reader ? (
-                <>
+            {story.reader ? (
+              <>
+                <ButtonLink href={readHref} variant="primary" size="lg">
                   <PlayIcon size={15} />
                   {t("story.readerCta")}
-                </>
-              ) : (
-                <>
+                </ButtonLink>
+                <ButtonLink href={learnHref} variant="secondary" size="lg">
+                  {t("story.learnCta")}
+                </ButtonLink>
+              </>
+            ) : (
+              <>
+                <span
+                  className="btn btn-primary btn-lg cursor-default"
+                  aria-disabled="true"
+                  title={t("story.prepNoteTitle")}
+                >
+                  <FeatherIcon size={15} />
+                  {t("common.comingSoon")}
+                </span>
+                <ButtonLink href={learnHref} variant="secondary" size="lg">
                   {t("story.overviewCta")}
                   <ArrowRightIcon size={16} />
-                </>
-              )}
-            </ButtonLink>
-            {story.reader ? (
-              <ButtonLink href={learnHref} variant="secondary" size="lg">
-                {t("story.learnCta")}
-              </ButtonLink>
-            ) : story.source.url ? (
-              <ButtonLink href={story.source.url} variant="secondary" size="lg" external>
-                {t("reader.openSource")}
-                <ExternalIcon size={15} />
-              </ButtonLink>
-            ) : null}
+                </ButtonLink>
+              </>
+            )}
           </div>
 
           {!story.reader ? (
             <div className="mt-6 flex gap-3 border border-gold-500/35 bg-gold-300/10 px-4 py-4">
-              <InfoIcon size={18} className="mt-0.5 shrink-0 text-gold-600" />
+              <FeatherIcon size={18} className="mt-0.5 shrink-0 text-gold-600" />
               <div>
                 <p className="text-[0.74rem] font-semibold uppercase tracking-[0.1em] text-forest-900">
                   {t("story.prepNoteTitle")}
                 </p>
-                <p className="mt-1 text-[0.82rem] leading-relaxed text-ink-500">{t("story.prepNote")}</p>
+                <p className={`mt-1 text-[0.82rem] leading-relaxed text-ink-500 ${locale === "si" ? "si" : ""}`}>
+                  {t("story.prepNote")}
+                </p>
               </div>
             </div>
           ) : null}
