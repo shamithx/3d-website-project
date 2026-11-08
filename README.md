@@ -187,7 +187,7 @@ The site is deployed on Vercel's free Hobby plan.
 Set these environment variables for Production (and Preview, if previews are used):
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://3d-website-project-two.vercel.app
+NEXT_PUBLIC_SITE_URL=https://jathakakatha.vercel.app
 NEXT_PUBLIC_REPO_URL=https://github.com/shamithx/3d-website-project
 ```
 
