@@ -2,9 +2,18 @@
 
 **Ancient Wisdom. Living Stories.** · **පැරණි නුවණ, ජීවමාන කතා.**
 
+[![Live site](https://img.shields.io/badge/live-jathakakatha.vercel.app-0f766e?style=flat-square)](https://jathakakatha.vercel.app)
+[![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19-087ea4?style=flat-square&logo=react&logoColor=white)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Three.js](https://img.shields.io/badge/Three.js-3D-000000?style=flat-square&logo=three.js&logoColor=white)](https://threejs.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06b6d4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+
 A bilingual, immersive reading platform for the Jataka tales, built for Sri Lankan children (8–15), families and classrooms. Twelve tales, two languages, one complete 3D reading experience — no accounts, no advertising, no tracking.
 
-**Live site:** <https://3d-website-project-two.vercel.app> · **Source:** <https://github.com/shamithx/3d-website-project>
+**Live site:** <https://jathakakatha.vercel.app> · **Source:** <https://github.com/shamithx/3d-website-project>
+
+[![Jathaka Katha homepage](docs/home.png)](https://jathakakatha.vercel.app)
 
 ---
 
